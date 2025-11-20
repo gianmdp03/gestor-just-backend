@@ -23,7 +23,7 @@ public class Location {
     private String name;
 
     @OneToMany(mappedBy = "location")
-    private List<InventoryItem> inventoryItem = new ArrayList<>();
+    private List<InventoryItem> inventoryItems = new ArrayList<>();
 
     @Builder
     public Location(String name) {
