@@ -10,7 +10,7 @@ import org.mapstruct.Mapping;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {OrderMapper.class})
 public interface CustomerMapper {
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "orders", ignore = true)

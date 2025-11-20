@@ -9,7 +9,7 @@ import org.mapstruct.Mapping;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {InventoryItemMapper.class})
 public interface LocationMapper {
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "inventoryItems", ignore = true)
