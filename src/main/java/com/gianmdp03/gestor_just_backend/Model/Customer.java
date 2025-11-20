@@ -26,7 +26,7 @@ public class Customer {
     private String phoneNumber;
 
     @OneToMany(mappedBy = "customer")
-    private List<Order> order = new ArrayList<>();
+    private List<Order> orders = new ArrayList<>();
 
     @Builder
     public Customer(String name, String lastname, String phoneNumber) {
