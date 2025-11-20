@@ -15,6 +15,5 @@ public interface ProductMapper {
     @Mapping(target = "orders", ignore = true)
     Product toEntity(ProductRequestDTO dto);
     ProductDetailDTO toDetailDto(Product entity);
-    ProductListDTO toListDtoElement(Product entity);
-    List<ProductListDTO> toListDto(List<Product> entities);
+    ProductListDTO toListDto(Product entity);
 }

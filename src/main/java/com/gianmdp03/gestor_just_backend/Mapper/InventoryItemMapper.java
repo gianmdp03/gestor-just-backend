@@ -14,6 +14,5 @@ public interface InventoryItemMapper {
     @Mapping(target = "product", ignore = true)
     @Mapping(target = "location", ignore = true)
     InventoryItem toEntity(InventoryItemRequestDTO dto);
-    InventoryItemListDTO toDto(InventoryItem entity);
-    List<InventoryItemListDTO> toListDto(List<InventoryItem> entities);
+    InventoryItemListDTO toListDto(InventoryItem entity);
 }

@@ -16,6 +16,5 @@ public interface CustomerMapper {
     @Mapping(target = "orders", ignore = true)
     Customer toEntity(CustomerRequestDTO dto);
     CustomerDetailDTO toDetailDto(Customer entity);
-    CustomerListDTO toListDtoElement(Customer entity);
-    List<CustomerListDTO> toListDto(List<Customer> entities);
+    CustomerListDTO toListDto(Customer entity);
 }

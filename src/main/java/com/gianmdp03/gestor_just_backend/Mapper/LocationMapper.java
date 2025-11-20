@@ -15,6 +15,6 @@ public interface LocationMapper {
     @Mapping(target = "inventoryItems", ignore = true)
     Location toEntity(LocationRequestDTO dto);
     LocationDetailDTO toDetailDto(Location entity);
-    LocationListDTO toListDtoElement(Location entity);
-    List<LocationListDTO> toListDTO(List<Location> entities);
+    LocationListDTO toListDto(Location entity);
+
 }
