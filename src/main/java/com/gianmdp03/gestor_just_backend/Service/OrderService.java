@@ -12,5 +12,6 @@ public interface OrderService {
     OrderDetailDTO addOrder(OrderRequestDTO orderRequestDTO);
     Page<OrderListDTO> listOrders(Pageable pageable);
     Page<OrderListDTO> listOrdersBetween(LocalDate startDate, LocalDate endDate, Pageable pageable);
+    Page<OrderListDTO> listOrdersByProduct(Long productId, Pageable pageable);
     void deleteOrder(Long id);
 }

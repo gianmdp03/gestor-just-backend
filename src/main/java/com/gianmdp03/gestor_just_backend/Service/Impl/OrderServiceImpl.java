@@ -56,7 +56,16 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Page<OrderListDTO> listOrdersBetween(LocalDate startDate, LocalDate endDate, Pageable pageable) {
-        Page<Order> page = orderRepository.findBySaleDateBetween(startDate, endDate, pageable);
+        Page<Order> page = orderRepository.findAllBySaleDateBetween(startDate, endDate, pageable);
+        if(page.isEmpty())
+            throw new NotFoundException("List is empty");
+        return page.map(orderMapper::toListDto);
+    }
+
+    @Override
+    public Page<OrderListDTO> listOrdersByProduct(Long productId, Pageable pageable)
+    {
+        Page<Order> page = orderRepository.findAllByProductId(productId, pageable);
         if(page.isEmpty())
             throw new NotFoundException("List is empty");
         return page.map(orderMapper::toListDto);

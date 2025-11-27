@@ -10,5 +10,6 @@ import java.time.LocalDate;
 
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Long> {
-    Page<Order> findBySaleDateBetween(LocalDate startDate, LocalDate endDate, Pageable pageable);
+    Page<Order> findAllBySaleDateBetween(LocalDate startDate, LocalDate endDate, Pageable pageable);
+    Page<Order> findAllByProductId(Long id, Pageable pageable);
 }
