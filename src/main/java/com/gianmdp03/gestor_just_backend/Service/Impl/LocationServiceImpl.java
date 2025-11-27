@@ -37,6 +37,7 @@ public class LocationServiceImpl implements LocationService {
     }
 
     @Override
+    @Transactional
     public void deleteLocation(Long id) {
         locationRepository.delete(locationRepository.findById(id).orElseThrow
                 (() -> new NotFoundException("Location ID does not exist")));

@@ -8,7 +8,6 @@ import com.gianmdp03.gestor_just_backend.Model.Customer;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-import java.util.List;
 
 @Mapper(componentModel = "spring", uses = {OrderMapper.class})
 public interface CustomerMapper {
