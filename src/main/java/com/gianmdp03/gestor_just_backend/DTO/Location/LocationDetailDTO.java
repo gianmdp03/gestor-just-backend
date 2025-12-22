@@ -1,6 +1,6 @@
-package com.gianmdp03.gestor_just_backend.DTO.Location;
+package com.gianmdp03.gestor_just_backend.dto.location;
 
-import com.gianmdp03.gestor_just_backend.DTO.InventoryItem.InventoryItemListDTO;
+import com.gianmdp03.gestor_just_backend.dto.inventoryitem.InventoryItemListDTO;
 
 import java.util.List;
 

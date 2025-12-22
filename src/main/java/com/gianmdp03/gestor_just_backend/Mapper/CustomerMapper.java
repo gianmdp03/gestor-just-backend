@@ -1,10 +1,10 @@
-package com.gianmdp03.gestor_just_backend.Mapper;
+package com.gianmdp03.gestor_just_backend.mapper;
 
 
-import com.gianmdp03.gestor_just_backend.DTO.Customer.CustomerDetailDTO;
-import com.gianmdp03.gestor_just_backend.DTO.Customer.CustomerListDTO;
-import com.gianmdp03.gestor_just_backend.DTO.Customer.CustomerRequestDTO;
-import com.gianmdp03.gestor_just_backend.Model.Customer;
+import com.gianmdp03.gestor_just_backend.dto.customer.CustomerDetailDTO;
+import com.gianmdp03.gestor_just_backend.dto.customer.CustomerListDTO;
+import com.gianmdp03.gestor_just_backend.dto.customer.CustomerRequestDTO;
+import com.gianmdp03.gestor_just_backend.model.Customer;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

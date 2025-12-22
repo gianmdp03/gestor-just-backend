@@ -1,22 +1,18 @@
-package com.gianmdp03.gestor_just_backend.Service.Impl;
+package com.gianmdp03.gestor_just_backend.service.impl;
 
-import com.gianmdp03.gestor_just_backend.DTO.Order.OrderListDTO;
-import com.gianmdp03.gestor_just_backend.DTO.Product.ProductDetailDTO;
-import com.gianmdp03.gestor_just_backend.DTO.Product.ProductListDTO;
-import com.gianmdp03.gestor_just_backend.DTO.Product.ProductRequestDTO;
-import com.gianmdp03.gestor_just_backend.Exception.NotFoundException;
-import com.gianmdp03.gestor_just_backend.Mapper.ProductMapper;
-import com.gianmdp03.gestor_just_backend.Model.Order;
-import com.gianmdp03.gestor_just_backend.Model.Product;
-import com.gianmdp03.gestor_just_backend.Repository.ProductRepository;
-import com.gianmdp03.gestor_just_backend.Service.ProductService;
+import com.gianmdp03.gestor_just_backend.dto.product.ProductDetailDTO;
+import com.gianmdp03.gestor_just_backend.dto.product.ProductListDTO;
+import com.gianmdp03.gestor_just_backend.dto.product.ProductRequestDTO;
+import com.gianmdp03.gestor_just_backend.exception.NotFoundException;
+import com.gianmdp03.gestor_just_backend.mapper.ProductMapper;
+import com.gianmdp03.gestor_just_backend.model.Product;
+import com.gianmdp03.gestor_just_backend.repository.ProductRepository;
+import com.gianmdp03.gestor_just_backend.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor

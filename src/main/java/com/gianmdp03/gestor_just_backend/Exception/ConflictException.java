@@ -1,4 +1,4 @@
-package com.gianmdp03.gestor_just_backend.Exception;
+package com.gianmdp03.gestor_just_backend.exception;
 
 public class ConflictException extends RuntimeException {
     public ConflictException(String message) {

@@ -1,4 +1,4 @@
-package com.gianmdp03.gestor_just_backend.DTO.Customer;
+package com.gianmdp03.gestor_just_backend.dto.customer;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;

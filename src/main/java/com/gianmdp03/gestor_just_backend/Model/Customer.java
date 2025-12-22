@@ -1,4 +1,4 @@
-package com.gianmdp03.gestor_just_backend.Model;
+package com.gianmdp03.gestor_just_backend.model;
 
 import jakarta.persistence.*;
 import lombok.*;

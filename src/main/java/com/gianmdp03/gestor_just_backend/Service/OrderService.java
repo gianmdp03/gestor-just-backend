@@ -1,8 +1,8 @@
-package com.gianmdp03.gestor_just_backend.Service;
+package com.gianmdp03.gestor_just_backend.service;
 
-import com.gianmdp03.gestor_just_backend.DTO.Order.OrderDetailDTO;
-import com.gianmdp03.gestor_just_backend.DTO.Order.OrderListDTO;
-import com.gianmdp03.gestor_just_backend.DTO.Order.OrderRequestDTO;
+import com.gianmdp03.gestor_just_backend.dto.order.OrderDetailDTO;
+import com.gianmdp03.gestor_just_backend.dto.order.OrderListDTO;
+import com.gianmdp03.gestor_just_backend.dto.order.OrderRequestDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

@@ -1,14 +1,14 @@
-package com.gianmdp03.gestor_just_backend.Service.Impl;
+package com.gianmdp03.gestor_just_backend.service.impl;
 
-import com.gianmdp03.gestor_just_backend.DTO.Customer.CustomerDetailDTO;
-import com.gianmdp03.gestor_just_backend.DTO.Customer.CustomerListDTO;
-import com.gianmdp03.gestor_just_backend.DTO.Customer.CustomerRequestDTO;
-import com.gianmdp03.gestor_just_backend.Exception.ConflictException;
-import com.gianmdp03.gestor_just_backend.Exception.NotFoundException;
-import com.gianmdp03.gestor_just_backend.Mapper.CustomerMapper;
-import com.gianmdp03.gestor_just_backend.Model.Customer;
-import com.gianmdp03.gestor_just_backend.Repository.CustomerRepository;
-import com.gianmdp03.gestor_just_backend.Service.CustomerService;
+import com.gianmdp03.gestor_just_backend.dto.customer.CustomerDetailDTO;
+import com.gianmdp03.gestor_just_backend.dto.customer.CustomerListDTO;
+import com.gianmdp03.gestor_just_backend.dto.customer.CustomerRequestDTO;
+import com.gianmdp03.gestor_just_backend.exception.ConflictException;
+import com.gianmdp03.gestor_just_backend.exception.NotFoundException;
+import com.gianmdp03.gestor_just_backend.mapper.CustomerMapper;
+import com.gianmdp03.gestor_just_backend.model.Customer;
+import com.gianmdp03.gestor_just_backend.repository.CustomerRepository;
+import com.gianmdp03.gestor_just_backend.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

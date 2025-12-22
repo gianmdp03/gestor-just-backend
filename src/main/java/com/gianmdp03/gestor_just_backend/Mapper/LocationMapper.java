@@ -1,13 +1,11 @@
-package com.gianmdp03.gestor_just_backend.Mapper;
+package com.gianmdp03.gestor_just_backend.mapper;
 
-import com.gianmdp03.gestor_just_backend.DTO.Location.LocationDetailDTO;
-import com.gianmdp03.gestor_just_backend.DTO.Location.LocationListDTO;
-import com.gianmdp03.gestor_just_backend.DTO.Location.LocationRequestDTO;
-import com.gianmdp03.gestor_just_backend.Model.Location;
+import com.gianmdp03.gestor_just_backend.dto.location.LocationDetailDTO;
+import com.gianmdp03.gestor_just_backend.dto.location.LocationListDTO;
+import com.gianmdp03.gestor_just_backend.dto.location.LocationRequestDTO;
+import com.gianmdp03.gestor_just_backend.model.Location;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-
-import java.util.List;
 
 @Mapper(componentModel = "spring", uses = {InventoryItemMapper.class})
 public interface LocationMapper {

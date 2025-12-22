@@ -1,6 +1,6 @@
-package com.gianmdp03.gestor_just_backend.DTO.Customer;
+package com.gianmdp03.gestor_just_backend.dto.customer;
 
-import com.gianmdp03.gestor_just_backend.DTO.Order.OrderListDTO;
+import com.gianmdp03.gestor_just_backend.dto.order.OrderListDTO;
 
 import java.util.List;
 

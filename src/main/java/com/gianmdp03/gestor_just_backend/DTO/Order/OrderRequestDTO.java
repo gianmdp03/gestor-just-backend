@@ -1,4 +1,4 @@
-package com.gianmdp03.gestor_just_backend.DTO.Order;
+package com.gianmdp03.gestor_just_backend.dto.order;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;

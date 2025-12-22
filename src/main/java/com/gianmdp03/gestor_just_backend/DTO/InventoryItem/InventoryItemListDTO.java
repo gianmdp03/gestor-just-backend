@@ -1,7 +1,7 @@
-package com.gianmdp03.gestor_just_backend.DTO.InventoryItem;
+package com.gianmdp03.gestor_just_backend.dto.inventoryitem;
 
-import com.gianmdp03.gestor_just_backend.Model.Product;
-import com.gianmdp03.gestor_just_backend.Model.Location;
+import com.gianmdp03.gestor_just_backend.model.Product;
+import com.gianmdp03.gestor_just_backend.model.Location;
 
 import java.time.LocalDate;
 

@@ -1,4 +1,4 @@
-package com.gianmdp03.gestor_just_backend.Exception;
+package com.gianmdp03.gestor_just_backend.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

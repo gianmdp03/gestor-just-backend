@@ -1,13 +1,11 @@
-package com.gianmdp03.gestor_just_backend.Mapper;
+package com.gianmdp03.gestor_just_backend.mapper;
 
-import com.gianmdp03.gestor_just_backend.DTO.Product.ProductDetailDTO;
-import com.gianmdp03.gestor_just_backend.DTO.Product.ProductListDTO;
-import com.gianmdp03.gestor_just_backend.DTO.Product.ProductRequestDTO;
-import com.gianmdp03.gestor_just_backend.Model.Product;
+import com.gianmdp03.gestor_just_backend.dto.product.ProductDetailDTO;
+import com.gianmdp03.gestor_just_backend.dto.product.ProductListDTO;
+import com.gianmdp03.gestor_just_backend.dto.product.ProductRequestDTO;
+import com.gianmdp03.gestor_just_backend.model.Product;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-
-import java.util.List;
 
 @Mapper(componentModel = "spring", uses = {OrderMapper.class})
 public interface ProductMapper {

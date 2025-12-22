@@ -1,8 +1,8 @@
-package com.gianmdp03.gestor_just_backend.Service;
+package com.gianmdp03.gestor_just_backend.service;
 
-import com.gianmdp03.gestor_just_backend.DTO.Location.LocationDetailDTO;
-import com.gianmdp03.gestor_just_backend.DTO.Location.LocationListDTO;
-import com.gianmdp03.gestor_just_backend.DTO.Location.LocationRequestDTO;
+import com.gianmdp03.gestor_just_backend.dto.location.LocationDetailDTO;
+import com.gianmdp03.gestor_just_backend.dto.location.LocationListDTO;
+import com.gianmdp03.gestor_just_backend.dto.location.LocationRequestDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

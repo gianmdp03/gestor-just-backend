@@ -1,13 +1,13 @@
-package com.gianmdp03.gestor_just_backend.Service.Impl;
+package com.gianmdp03.gestor_just_backend.service.impl;
 
-import com.gianmdp03.gestor_just_backend.DTO.Location.LocationDetailDTO;
-import com.gianmdp03.gestor_just_backend.DTO.Location.LocationListDTO;
-import com.gianmdp03.gestor_just_backend.DTO.Location.LocationRequestDTO;
-import com.gianmdp03.gestor_just_backend.Exception.NotFoundException;
-import com.gianmdp03.gestor_just_backend.Mapper.LocationMapper;
-import com.gianmdp03.gestor_just_backend.Model.Location;
-import com.gianmdp03.gestor_just_backend.Repository.LocationRepository;
-import com.gianmdp03.gestor_just_backend.Service.LocationService;
+import com.gianmdp03.gestor_just_backend.dto.location.LocationDetailDTO;
+import com.gianmdp03.gestor_just_backend.dto.location.LocationListDTO;
+import com.gianmdp03.gestor_just_backend.dto.location.LocationRequestDTO;
+import com.gianmdp03.gestor_just_backend.exception.NotFoundException;
+import com.gianmdp03.gestor_just_backend.mapper.LocationMapper;
+import com.gianmdp03.gestor_just_backend.model.Location;
+import com.gianmdp03.gestor_just_backend.repository.LocationRepository;
+import com.gianmdp03.gestor_just_backend.service.LocationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

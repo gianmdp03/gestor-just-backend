@@ -1,6 +1,6 @@
-package com.gianmdp03.gestor_just_backend.DTO.Order;
+package com.gianmdp03.gestor_just_backend.dto.order;
 
-import com.gianmdp03.gestor_just_backend.Model.Customer;
+import com.gianmdp03.gestor_just_backend.model.Customer;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

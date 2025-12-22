@@ -1,4 +1,4 @@
-package com.gianmdp03.gestor_just_backend.DTO.InventoryItem;
+package com.gianmdp03.gestor_just_backend.dto.inventoryitem;
 
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;

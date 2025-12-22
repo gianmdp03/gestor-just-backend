@@ -1,6 +1,6 @@
-package com.gianmdp03.gestor_just_backend.Repository;
+package com.gianmdp03.gestor_just_backend.repository;
 
-import com.gianmdp03.gestor_just_backend.Model.Order;
+import com.gianmdp03.gestor_just_backend.model.Order;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

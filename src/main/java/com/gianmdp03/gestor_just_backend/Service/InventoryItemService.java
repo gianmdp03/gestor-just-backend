@@ -1,7 +1,7 @@
-package com.gianmdp03.gestor_just_backend.Service;
+package com.gianmdp03.gestor_just_backend.service;
 
-import com.gianmdp03.gestor_just_backend.DTO.InventoryItem.InventoryItemListDTO;
-import com.gianmdp03.gestor_just_backend.DTO.InventoryItem.InventoryItemRequestDTO;
+import com.gianmdp03.gestor_just_backend.dto.inventoryitem.InventoryItemListDTO;
+import com.gianmdp03.gestor_just_backend.dto.inventoryitem.InventoryItemRequestDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

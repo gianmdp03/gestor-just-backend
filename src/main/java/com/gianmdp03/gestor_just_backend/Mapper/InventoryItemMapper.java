@@ -1,12 +1,10 @@
-package com.gianmdp03.gestor_just_backend.Mapper;
+package com.gianmdp03.gestor_just_backend.mapper;
 
-import com.gianmdp03.gestor_just_backend.DTO.InventoryItem.InventoryItemListDTO;
-import com.gianmdp03.gestor_just_backend.DTO.InventoryItem.InventoryItemRequestDTO;
-import com.gianmdp03.gestor_just_backend.Model.InventoryItem;
+import com.gianmdp03.gestor_just_backend.dto.inventoryitem.InventoryItemListDTO;
+import com.gianmdp03.gestor_just_backend.dto.inventoryitem.InventoryItemRequestDTO;
+import com.gianmdp03.gestor_just_backend.model.InventoryItem;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-
-import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface InventoryItemMapper {
