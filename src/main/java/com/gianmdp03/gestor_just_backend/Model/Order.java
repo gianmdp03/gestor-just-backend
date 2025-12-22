@@ -41,9 +41,7 @@ public class Order {
     )
     private List<Product> products = new ArrayList<>();
 
-    public Order(BigDecimal amount, String description, LocalDateTime saleDate, Customer customer) {
-        this.amount = amount;
-        this.description = description;
+    public Order(LocalDateTime saleDate, Customer customer) {
         this.saleDate = saleDate;
         this.customer = customer;
     }
