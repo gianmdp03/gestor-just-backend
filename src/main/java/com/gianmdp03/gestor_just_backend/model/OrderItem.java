@@ -19,7 +19,12 @@ public class OrderItem {
     @JoinColumn(name = "product_id")
     private Product product;
 
+    @Column(nullable = false)
     private int amount;
+
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
 
     public OrderItem(Product product, int amount) {
         this.product = product;

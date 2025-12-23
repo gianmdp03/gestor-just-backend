@@ -5,9 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Entity
 @Table(name = "products")
 @Getter
@@ -22,9 +19,6 @@ public class Product {
     private String name;
 
     private String imageUrl;
-
-    @ManyToMany(mappedBy = "products")
-    private List<Order> orders = new ArrayList<>();
 
     private boolean active = true;
 
