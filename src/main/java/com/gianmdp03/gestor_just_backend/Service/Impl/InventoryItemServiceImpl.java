@@ -2,6 +2,7 @@ package com.gianmdp03.gestor_just_backend.service.impl;
 
 import com.gianmdp03.gestor_just_backend.dto.inventoryitem.InventoryItemListDTO;
 import com.gianmdp03.gestor_just_backend.dto.inventoryitem.InventoryItemRequestDTO;
+import com.gianmdp03.gestor_just_backend.dto.inventoryitem.InventoryItemUpdateDTO;
 import com.gianmdp03.gestor_just_backend.exception.NotFoundException;
 import com.gianmdp03.gestor_just_backend.mapper.InventoryItemMapper;
 import com.gianmdp03.gestor_just_backend.model.InventoryItem;
@@ -39,6 +40,16 @@ public class InventoryItemServiceImpl implements InventoryItemService {
         );
 
         InventoryItem inventoryItem = inventoryItemRepository.save(inventoryItemMapper.toEntity(inventoryItemRequestDTO));
+        return inventoryItemMapper.toListDto(inventoryItem);
+    }
+
+    @Override
+    @Transactional
+    public InventoryItemListDTO updateInventoryItem(Long id, InventoryItemUpdateDTO dto){
+        InventoryItem inventoryItem = inventoryItemRepository.findById(id)
+                .orElseThrow(()-> new NotFoundException("InventoryItem ID does not exist"));
+        inventoryItemMapper.updateEntityFromDto(dto, inventoryItem);
+        inventoryItem = inventoryItemRepository.save(inventoryItem);
         return inventoryItemMapper.toListDto(inventoryItem);
     }
 
