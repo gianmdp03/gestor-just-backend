@@ -3,6 +3,7 @@ package com.gianmdp03.gestor_just_backend.service.impl;
 import com.gianmdp03.gestor_just_backend.dto.product.ProductDetailDTO;
 import com.gianmdp03.gestor_just_backend.dto.product.ProductListDTO;
 import com.gianmdp03.gestor_just_backend.dto.product.ProductRequestDTO;
+import com.gianmdp03.gestor_just_backend.dto.product.ProductUpdateDTO;
 import com.gianmdp03.gestor_just_backend.exception.ConflictException;
 import com.gianmdp03.gestor_just_backend.exception.NotFoundException;
 import com.gianmdp03.gestor_just_backend.mapper.ProductMapper;
@@ -38,6 +39,16 @@ public class ProductServiceImpl implements ProductService {
             return productMapper.toDetailDto(existingProduct);
         }
         Product product = productRepository.save(productMapper.toEntity(productRequestDTO));
+        return productMapper.toDetailDto(product);
+    }
+
+    @Override
+    @Transactional
+    public ProductDetailDTO updateProduct(Long id, ProductUpdateDTO dto) {
+        Product product = productRepository.findByIdAndEnabledTrue(id)
+                .orElseThrow(()-> new NotFoundException("Product ID does not exist"));
+        productMapper.updateEntityFromDto(dto, product);
+        product = productRepository.save(product);
         return productMapper.toDetailDto(product);
     }
 
