@@ -31,10 +31,10 @@ public class InventoryItemServiceImpl implements InventoryItemService {
     @Override
     @Transactional
     public InventoryItemListDTO addInventoryItem(InventoryItemRequestDTO inventoryItemRequestDTO) {
-        Product product = productRepository.findById(inventoryItemRequestDTO.getProductId()).orElseThrow(
+        Product product = productRepository.findById(inventoryItemRequestDTO.productId()).orElseThrow(
                 () -> new NotFoundException("Product ID does not exist")
         );
-        Location location = locationRepository.findById(inventoryItemRequestDTO.getLocationId()).orElseThrow(
+        Location location = locationRepository.findById(inventoryItemRequestDTO.locationId()).orElseThrow(
                 () -> new NotFoundException("Location ID does not exist")
         );
 
