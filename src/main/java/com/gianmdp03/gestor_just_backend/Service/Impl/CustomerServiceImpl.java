@@ -3,6 +3,7 @@ package com.gianmdp03.gestor_just_backend.service.impl;
 import com.gianmdp03.gestor_just_backend.dto.customer.CustomerDetailDTO;
 import com.gianmdp03.gestor_just_backend.dto.customer.CustomerListDTO;
 import com.gianmdp03.gestor_just_backend.dto.customer.CustomerRequestDTO;
+import com.gianmdp03.gestor_just_backend.dto.customer.CustomerUpdateDTO;
 import com.gianmdp03.gestor_just_backend.exception.ConflictException;
 import com.gianmdp03.gestor_just_backend.exception.NotFoundException;
 import com.gianmdp03.gestor_just_backend.mapper.CustomerMapper;
@@ -28,6 +29,15 @@ public class CustomerServiceImpl implements CustomerService {
         if(customerRepository.existsByPhoneNumber(customerRequestDTO.phoneNumber()))
             throw new ConflictException("Phone number already exists");
         Customer customer = customerRepository.save(customerMapper.toEntity(customerRequestDTO));
+        return customerMapper.toDetailDto(customer);
+    }
+
+    @Override
+    @Transactional
+    public CustomerDetailDTO updateCustomer(Long id, CustomerUpdateDTO dto){
+        Customer customer = customerRepository.findById(id).orElseThrow(()-> new NotFoundException("Customer ID does not exist"));
+        customerMapper.updateEntityFromDto(dto, customer);
+        customer = customerRepository.save(customer);
         return customerMapper.toDetailDto(customer);
     }
 
