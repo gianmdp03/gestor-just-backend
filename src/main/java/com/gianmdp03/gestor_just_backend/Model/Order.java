@@ -23,7 +23,7 @@ public class Order {
     @Column(nullable = false)
     private LocalDateTime saleDate;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> orderItems;
 
     @ManyToOne

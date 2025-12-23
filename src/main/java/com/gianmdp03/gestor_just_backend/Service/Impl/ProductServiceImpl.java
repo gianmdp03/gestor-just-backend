@@ -3,6 +3,7 @@ package com.gianmdp03.gestor_just_backend.service.impl;
 import com.gianmdp03.gestor_just_backend.dto.product.ProductDetailDTO;
 import com.gianmdp03.gestor_just_backend.dto.product.ProductListDTO;
 import com.gianmdp03.gestor_just_backend.dto.product.ProductRequestDTO;
+import com.gianmdp03.gestor_just_backend.exception.ConflictException;
 import com.gianmdp03.gestor_just_backend.exception.NotFoundException;
 import com.gianmdp03.gestor_just_backend.mapper.ProductMapper;
 import com.gianmdp03.gestor_just_backend.model.Product;
@@ -14,6 +15,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -24,13 +27,23 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @Transactional
     public ProductDetailDTO addProduct(ProductRequestDTO productRequestDTO) {
+        if(productRepository.existsByNameAndEnabledTrue(productRequestDTO.name())){
+            throw new ConflictException("Name already exists");
+        }
+        Optional<Product> optionalProduct = productRepository.findByName(productRequestDTO.name());
+        if(optionalProduct.isPresent()){
+            Product existingProduct = optionalProduct.get();
+            existingProduct.setEnabled(true);
+            existingProduct = productRepository.save(existingProduct);
+            return productMapper.toDetailDto(existingProduct);
+        }
         Product product = productRepository.save(productMapper.toEntity(productRequestDTO));
         return productMapper.toDetailDto(product);
     }
 
     @Override
     public Page<ProductListDTO> listProducts(Pageable pageable) {
-        Page<Product> page = productRepository.findAll(pageable);
+        Page<Product> page = productRepository.findAllByEnabledTrue(pageable);
         if(page.isEmpty())
             throw new NotFoundException("List is empty");
         return page.map(productMapper::toListDto);
@@ -39,6 +52,8 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @Transactional
     public void deleteProduct(Long id) {
-        productRepository.delete(productRepository.findById(id).orElseThrow(()-> new NotFoundException("Product ID does not exist")));
+        Product product = productRepository.findByIdAndEnabledTrue(id).orElseThrow(()-> new NotFoundException("Product ID does not exist"));
+        product.setEnabled(false);
+        productRepository.save(product);
     }
 }

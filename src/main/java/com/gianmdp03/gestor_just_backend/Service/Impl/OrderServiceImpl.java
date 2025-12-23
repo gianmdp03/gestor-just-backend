@@ -81,4 +81,11 @@ public class OrderServiceImpl implements OrderService {
     public void deleteOrder(Long id) {
         orderRepository.delete(orderRepository.findById(id).orElseThrow(() -> new NotFoundException("Order ID does not exist")));
     }
+
+    @Override
+    @Transactional
+    public void deleteItem(Long id){
+        OrderItem orderItem = orderItemRepository.findById(id).orElseThrow(() -> new NotFoundException("Order item ID does not exist"));
+        orderItemRepository.delete(orderItem);
+    }
 }

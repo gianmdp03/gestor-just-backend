@@ -15,12 +15,12 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String name;
 
     private String imageUrl;
 
-    private boolean active = true;
+    private boolean enabled = true;
 
     public Product(String name, String imageUrl) {
         this.name = name;
