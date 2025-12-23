@@ -3,6 +3,7 @@ package com.gianmdp03.gestor_just_backend.controller;
 import com.gianmdp03.gestor_just_backend.dto.location.LocationDetailDTO;
 import com.gianmdp03.gestor_just_backend.dto.location.LocationListDTO;
 import com.gianmdp03.gestor_just_backend.dto.location.LocationRequestDTO;
+import com.gianmdp03.gestor_just_backend.dto.location.LocationUpdateDTO;
 import com.gianmdp03.gestor_just_backend.service.LocationService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,11 @@ public class LocationController {
     @PostMapping
     public ResponseEntity<LocationDetailDTO> addLocation(@Valid @RequestBody LocationRequestDTO locationRequestDTO){
         return ResponseEntity.status(HttpStatus.CREATED).body(locationService.addLocation(locationRequestDTO));
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<LocationDetailDTO> updateLocation(@PathVariable Long id, @RequestBody LocationUpdateDTO dto){
+        return ResponseEntity.status(HttpStatus.OK).body(locationService.updateLocation(id, dto));
     }
 
     @GetMapping
