@@ -17,10 +17,7 @@ public class Customer {
     private Long id;
 
     @Column(nullable = false)
-    private String name;
-
-    @Column(nullable = false)
-    private String lastname;
+    private String fullname;
 
     @Column(nullable = false, unique = true)
     private String phoneNumber;
@@ -28,9 +25,8 @@ public class Customer {
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Order> orders = new ArrayList<>();
 
-    public Customer(String name, String lastname, String phoneNumber) {
-        this.name = name;
-        this.lastname = lastname;
+    public Customer(String fullname, String phoneNumber) {
+        this.fullname = fullname;
         this.phoneNumber = phoneNumber;
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 public interface CustomerService {
     CustomerDetailDTO addCustomer(CustomerRequestDTO customerRequestDTO);
     CustomerDetailDTO updateCustomer(Long id, CustomerUpdateDTO dto);
+    Page<CustomerListDTO> searchCustomersByFullname(String fullname, Pageable pageable);
     Page<CustomerListDTO> listCustomers(Pageable pageable);
     void deleteCustomer(Long id);
 }

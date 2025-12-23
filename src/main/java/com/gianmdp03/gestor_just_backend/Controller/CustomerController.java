@@ -31,6 +31,13 @@ public class CustomerController {
         return ResponseEntity.status(HttpStatus.OK).body(customerService.updateCustomer(id, dto));
     }
 
+    @GetMapping("/{fullname}")
+    public ResponseEntity<Page<CustomerListDTO>> searchCustomersByFullname(
+            @PathVariable String fullname,
+            @PageableDefault(page = 0, size = 10, sort = "fullname", direction = Sort.Direction.DESC) Pageable pageable){
+        return ResponseEntity.status(HttpStatus.OK).body(customerService.searchCustomersByFullname(fullname, pageable));
+    }
+
     @GetMapping
     public ResponseEntity<Page<CustomerListDTO>> listCustomers(
             @PageableDefault(page = 0, size = 10, sort = "name", direction = Sort.Direction.DESC) Pageable pageable){

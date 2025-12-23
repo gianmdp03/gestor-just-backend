@@ -31,13 +31,13 @@ public class OrderController {
 
     @GetMapping
     public ResponseEntity<Page<OrderListDTO>> listOrders(
-            @PageableDefault(page = 0, size = 10, sort = "name", direction = Sort.Direction.DESC) Pageable pageable){
+            @PageableDefault(page = 0, size = 10, sort = "saleDate", direction = Sort.Direction.DESC) Pageable pageable){
         return ResponseEntity.status(HttpStatus.OK).body(orderService.listOrders(pageable));
     }
 
     @GetMapping("/{startDate}/{endDate}")
     public ResponseEntity<Page<OrderListDTO>> listOrdersBetween(@PathVariable LocalDate startDate, @PathVariable LocalDate endDate,
-            @PageableDefault(page = 0, size = 10, sort = "name", direction = Sort.Direction.DESC) Pageable pageable){
+            @PageableDefault(page = 0, size = 10, sort = "saleDate", direction = Sort.Direction.DESC) Pageable pageable){
         return ResponseEntity.status(HttpStatus.OK).body(orderService.listOrdersBetween(startDate, endDate, pageable));
     }
 

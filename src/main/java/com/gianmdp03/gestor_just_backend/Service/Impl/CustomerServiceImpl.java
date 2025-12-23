@@ -42,6 +42,15 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public Page<CustomerListDTO> searchCustomersByFullname(String fullname, Pageable pageable){
+        Page<Customer> page = customerRepository.findByFullnameContainingIgnoreCase(fullname, pageable);
+        if(page.isEmpty()){
+            return Page.empty();
+        }
+        return page.map(customerMapper::toListDto);
+    }
+
+    @Override
     public Page<CustomerListDTO> listCustomers(Pageable pageable) {
         Page<Customer> list = customerRepository.findAll(pageable);
         if (list.isEmpty())
