@@ -44,7 +44,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     @Transactional
-    public OrderListDTO addItems(List<OrderItemRequestDTO> orderItemsDTO, Long customerId){
+    public OrderListDTO addOrderWithItems(List<OrderItemRequestDTO> orderItemsDTO, Long customerId){
         if(orderItemsDTO.isEmpty()){
             throw new NotFoundException("OrderItem list is empty");
         }

@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface OrderService {
     Order addOrder(Long customerId);
-    OrderListDTO addItems(List<OrderItemRequestDTO> orderItems, Long customerId);
+    OrderListDTO addOrderWithItems(List<OrderItemRequestDTO> orderItems, Long customerId);
     Page<OrderListDTO> listOrders(Pageable pageable);
     Page<OrderListDTO> listOrdersBetween(LocalDate startDate, LocalDate endDate, Pageable pageable);
     void deleteOrder(Long id);
