@@ -31,6 +31,13 @@ public class LocationController {
         return ResponseEntity.status(HttpStatus.OK).body(locationService.updateLocation(id, dto));
     }
 
+    @GetMapping("/{name}")
+    public ResponseEntity<Page<LocationListDTO>> searchByName(
+            @PathVariable String name,
+            @PageableDefault(page = 0, size = 10, sort = "name", direction = Sort.Direction.DESC) Pageable pageable){
+        return ResponseEntity.status(HttpStatus.OK).body(locationService.searchByName(name, pageable));
+    }
+
     @GetMapping
     public ResponseEntity<Page<LocationListDTO>> listLocations(
             @PageableDefault(page = 0, size = 10, sort = "name", direction = Sort.Direction.DESC) Pageable pageable){

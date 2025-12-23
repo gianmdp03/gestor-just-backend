@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 public interface LocationService {
     LocationDetailDTO addLocation(LocationRequestDTO locationRequestDTO);
     LocationDetailDTO updateLocation(Long id, LocationUpdateDTO dto);
+    Page<LocationListDTO> searchByName(String name, Pageable pageable);
     Page<LocationListDTO> listLocations(Pageable pageable);
     void deleteLocation(Long id);
 }

@@ -41,6 +41,15 @@ public class LocationServiceImpl implements LocationService {
     }
 
     @Override
+    public Page<LocationListDTO> searchByName(String name, Pageable pageable) {
+        Page<Location> page = locationRepository.findByNameContainingIgnoreCase(name, pageable);
+        if(page.isEmpty()){
+            return Page.empty();
+        }
+        return page.map(locationMapper::toListDto);
+    }
+
+    @Override
     public Page<LocationListDTO> listLocations(Pageable pageable) {
         Page<Location> page = locationRepository.findAll(pageable);
         if(page.isEmpty())
