@@ -1,8 +1,10 @@
 package com.gianmdp03.gestor_just_backend.service;
 
 import com.gianmdp03.gestor_just_backend.dto.order.OrderListDTO;
+import com.gianmdp03.gestor_just_backend.dto.orderitem.OrderItemListDTO;
 import com.gianmdp03.gestor_just_backend.dto.orderitem.OrderItemRequestDTO;
 import com.gianmdp03.gestor_just_backend.model.Order;
+import com.gianmdp03.gestor_just_backend.model.OrderItem;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -12,6 +14,7 @@ import java.util.List;
 public interface OrderService {
     Order addOrder(Long customerId);
     OrderListDTO addOrderWithItems(List<OrderItemRequestDTO> orderItems, Long customerId);
+    Page<OrderItemListDTO> listItemsByOrder(Long orderId, Pageable pageable);
     Page<OrderListDTO> listOrders(Pageable pageable);
     Page<OrderListDTO> listOrdersBetween(LocalDate startDate, LocalDate endDate, Pageable pageable);
     void deleteOrder(Long id);

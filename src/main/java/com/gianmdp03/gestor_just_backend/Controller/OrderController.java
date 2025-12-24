@@ -1,6 +1,7 @@
 package com.gianmdp03.gestor_just_backend.controller;
 
 import com.gianmdp03.gestor_just_backend.dto.order.OrderListDTO;
+import com.gianmdp03.gestor_just_backend.dto.orderitem.OrderItemListDTO;
 import com.gianmdp03.gestor_just_backend.dto.orderitem.OrderItemRequestDTO;
 import com.gianmdp03.gestor_just_backend.service.OrderService;
 import jakarta.validation.Valid;
@@ -28,6 +29,14 @@ public class OrderController {
     {
         return ResponseEntity.status(HttpStatus.CREATED).body(orderService.addOrderWithItems(orderItems, customerId));
     }
+
+    @GetMapping("/{orderId}")
+    public ResponseEntity<Page<OrderItemListDTO>> listItemsByOrder(
+            @PathVariable Long orderId,
+            @PageableDefault(page = 0, size = 10, sort = "saleDate", direction = Sort.Direction.DESC) Pageable pageable)
+        {
+            return ResponseEntity.status(HttpStatus.OK).body(orderService.listItemsByOrder(orderId, pageable));
+        }
 
     @GetMapping
     public ResponseEntity<Page<OrderListDTO>> listOrders(

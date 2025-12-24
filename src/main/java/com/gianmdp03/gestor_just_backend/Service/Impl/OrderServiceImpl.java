@@ -1,6 +1,7 @@
 package com.gianmdp03.gestor_just_backend.service.impl;
 
 import com.gianmdp03.gestor_just_backend.dto.order.OrderListDTO;
+import com.gianmdp03.gestor_just_backend.dto.orderitem.OrderItemListDTO;
 import com.gianmdp03.gestor_just_backend.dto.orderitem.OrderItemRequestDTO;
 import com.gianmdp03.gestor_just_backend.exception.NotFoundException;
 import com.gianmdp03.gestor_just_backend.mapper.OrderItemMapper;
@@ -56,6 +57,16 @@ public class OrderServiceImpl implements OrderService {
         orderItemRepository.saveAll(orderItems);
         order = orderRepository.findById(order.getId()).orElseThrow(()-> new NotFoundException("Order ID does not exist"));
         return orderMapper.toListDto(order);
+    }
+
+    @Override
+    public Page<OrderItemListDTO> listItemsByOrder(Long orderId, Pageable pageable) {
+        Order order = orderRepository.findById(orderId).orElseThrow(()-> new NotFoundException("Order ID does not exist"));
+        Page<OrderItem> page = orderItemRepository.findAllByOrder(order, pageable);
+        if(page.isEmpty()){
+            return Page.empty();
+        }
+        return page.map(orderItemMapper::toListDto);
     }
 
     @Override
