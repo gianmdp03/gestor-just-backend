@@ -40,7 +40,7 @@ public class CustomerController {
 
     @GetMapping
     public ResponseEntity<Page<CustomerListDTO>> listCustomers(
-            @PageableDefault(page = 0, size = 10, sort = "name", direction = Sort.Direction.DESC) Pageable pageable){
+            @PageableDefault(page = 0, size = 10, sort = "fullname", direction = Sort.Direction.DESC) Pageable pageable){
         return ResponseEntity.status(HttpStatus.OK).body(customerService.listCustomers(pageable));
     }
 

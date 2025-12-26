@@ -114,6 +114,8 @@
                     <compilerArgs>
                         <compilerArg>-parameters</compilerArg>
                     </compilerArgs>
+					<source>25</source>
+					<target>25</target>
 				</configuration>
 			</plugin>
 			<plugin>
