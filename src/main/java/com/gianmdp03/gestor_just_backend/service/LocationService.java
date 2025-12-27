@@ -12,5 +12,6 @@ public interface LocationService {
     LocationDetailDTO updateLocation(Long id, LocationUpdateDTO dto);
     Page<LocationListDTO> searchByName(String name, Pageable pageable);
     Page<LocationListDTO> listLocations(Pageable pageable);
+    LocationDetailDTO getLocationById(Long id);
     void deleteLocation(Long id);
 }

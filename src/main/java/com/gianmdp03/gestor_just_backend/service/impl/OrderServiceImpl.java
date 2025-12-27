@@ -16,6 +16,7 @@ import com.gianmdp03.gestor_just_backend.repository.OrderRepository;
 import com.gianmdp03.gestor_just_backend.repository.ProductRepository;
 import com.gianmdp03.gestor_just_backend.service.OrderService;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.annotations.NotFound;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -98,6 +99,12 @@ public class OrderServiceImpl implements OrderService {
         if(page.isEmpty())
             throw new NotFoundException("List is empty");
         return page.map(orderMapper::toListDto);
+    }
+
+    @Override
+    public OrderListDTO getOrderById(Long id){
+        Order order = orderRepository.findById(id).orElseThrow(()-> new NotFoundException("Order ID does not exist"));
+        return orderMapper.toListDto(order);
     }
 
     @Override

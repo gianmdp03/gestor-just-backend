@@ -12,5 +12,6 @@ public interface CustomerService {
     CustomerDetailDTO updateCustomer(Long id, CustomerUpdateDTO dto);
     Page<CustomerListDTO> searchCustomersByFullname(String fullname, Pageable pageable);
     Page<CustomerListDTO> listCustomers(Pageable pageable);
+    CustomerDetailDTO getCustomerById(Long id);
     void deleteCustomer(Long id);
 }

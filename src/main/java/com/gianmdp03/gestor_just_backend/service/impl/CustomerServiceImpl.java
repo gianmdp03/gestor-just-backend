@@ -59,6 +59,12 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public CustomerDetailDTO getCustomerById(Long id){
+        Customer customer = customerRepository.findById(id).orElseThrow(()-> new NotFoundException("Customer ID does not exist"));
+        return customerMapper.toDetailDto(customer);
+    }
+
+    @Override
     @Transactional
     public void deleteCustomer(Long id){
         Customer customer = customerRepository.findById(id)

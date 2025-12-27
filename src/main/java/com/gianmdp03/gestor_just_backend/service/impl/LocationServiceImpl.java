@@ -60,6 +60,12 @@ public class LocationServiceImpl implements LocationService {
     }
 
     @Override
+    public LocationDetailDTO getLocationById(Long id){
+        Location location = locationRepository.findById(id).orElseThrow(()-> new NotFoundException("Location ID does not exist"));
+        return locationMapper.toDetailDto(location);
+    }
+
+    @Override
     @Transactional
     public void deleteLocation(Long id) {
         Location location = locationRepository.findById(id)

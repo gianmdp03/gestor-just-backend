@@ -12,5 +12,6 @@ public interface ProductService {
     ProductDetailDTO updateProduct(Long id, ProductUpdateDTO dto);
     Page<ProductListDTO> searchByName(String name, Pageable pageable);
     Page<ProductListDTO> listProducts(Pageable pageable);
+    ProductDetailDTO getProductById(Long id);
     void deleteProduct(Long id);
 }
