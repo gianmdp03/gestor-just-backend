@@ -50,6 +50,11 @@ public class OrderController {
         return ResponseEntity.status(HttpStatus.OK).body(orderService.listOrdersBetween(startDate, endDate, pageable));
     }
 
+    @GetMapping("/id/{id}")
+    public ResponseEntity<OrderListDTO> getOrderById(@PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(orderService.getOrderById(id));
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteOrder(@PathVariable Long id){
         orderService.deleteOrder(id);

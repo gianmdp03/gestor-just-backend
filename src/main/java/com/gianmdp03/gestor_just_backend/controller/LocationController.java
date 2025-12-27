@@ -44,6 +44,11 @@ public class LocationController {
         return ResponseEntity.status(HttpStatus.OK).body(locationService.listLocations(pageable));
     }
 
+    @GetMapping("/id/{id}")
+    public ResponseEntity<LocationDetailDTO> getLocationById(@PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(locationService.getLocationById(id));
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteLocation(@PathVariable Long id){
         locationService.deleteLocation(id);
