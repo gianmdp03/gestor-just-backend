@@ -9,9 +9,11 @@ import com.gianmdp03.gestor_just_backend.mapper.OrderMapper;
 import com.gianmdp03.gestor_just_backend.model.Customer;
 import com.gianmdp03.gestor_just_backend.model.Order;
 import com.gianmdp03.gestor_just_backend.model.OrderItem;
+import com.gianmdp03.gestor_just_backend.model.Product;
 import com.gianmdp03.gestor_just_backend.repository.CustomerRepository;
 import com.gianmdp03.gestor_just_backend.repository.OrderItemRepository;
 import com.gianmdp03.gestor_just_backend.repository.OrderRepository;
+import com.gianmdp03.gestor_just_backend.repository.ProductRepository;
 import com.gianmdp03.gestor_just_backend.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -22,6 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -33,6 +36,7 @@ public class OrderServiceImpl implements OrderService {
     private final CustomerRepository customerRepository;
     private final OrderItemRepository orderItemRepository;
     private final OrderItemMapper orderItemMapper;
+    private final ProductRepository productRepository;
 
     @Override
     @Transactional
@@ -50,12 +54,21 @@ public class OrderServiceImpl implements OrderService {
             throw new NotFoundException("OrderItem list is empty");
         }
         Order order = addOrder(customerId);
-        List<OrderItem> orderItems = orderItemMapper.toEntityList(orderItemsDTO);
-        for(OrderItem item: orderItems){
+        List<OrderItem> orderItems = new ArrayList<>();
+
+        for (OrderItemRequestDTO dto : orderItemsDTO) {
+            OrderItem item = orderItemMapper.toEntity(dto);
             item.setOrder(order);
+            Product product = productRepository.findById(dto.productId())
+                    .orElseThrow(() -> new NotFoundException("Product ID " + dto.productId() + " does not exist"));
+            item.setProduct(product);
+
+            orderItems.add(item);
         }
         orderItemRepository.saveAll(orderItems);
-        order = orderRepository.findById(order.getId()).orElseThrow(()-> new NotFoundException("Order ID does not exist"));
+        order = orderRepository.findById(order.getId())
+                .orElseThrow(()-> new NotFoundException("Order ID does not exist"));
+
         return orderMapper.toListDto(order);
     }
 
