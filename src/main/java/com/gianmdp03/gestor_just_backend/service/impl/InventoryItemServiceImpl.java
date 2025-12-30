@@ -59,7 +59,7 @@ public class InventoryItemServiceImpl implements InventoryItemService {
     public Page<InventoryItemListDTO> listInventoryItems(Pageable pageable) {
         Page<InventoryItem> page = inventoryItemRepository.findByExpireDateGreaterThanEqual(LocalDate.now(), pageable);
         if(page.isEmpty())
-            throw new NotFoundException("List is empty");
+            return Page.empty();
         return page.map(inventoryItemMapper::toListDto);
     }
 
@@ -68,7 +68,7 @@ public class InventoryItemServiceImpl implements InventoryItemService {
         Product product = productRepository.findById(productId).orElseThrow(() -> new NotFoundException("Product ID does not exist"));
         Page<InventoryItem> page = inventoryItemRepository.findAllByProductAndExpireDateGreaterThanEqual(product, LocalDate.now(), pageable);
         if(page.isEmpty())
-            throw new NotFoundException("List is empty");
+            return Page.empty();
         return page.map(inventoryItemMapper::toListDto);
     }
 
@@ -77,7 +77,7 @@ public class InventoryItemServiceImpl implements InventoryItemService {
         Location location = locationRepository.findById(locationId).orElseThrow(() -> new NotFoundException("Location ID does not exist"));
         Page<InventoryItem> page = inventoryItemRepository.findAllByLocationAndExpireDateGreaterThanEqual(location, LocalDate.now(), pageable);
         if(page.isEmpty())
-            throw new NotFoundException("List is empty");
+            return Page.empty();
         return page.map(inventoryItemMapper::toListDto);
     }
 
@@ -85,7 +85,7 @@ public class InventoryItemServiceImpl implements InventoryItemService {
     public Page<InventoryItemListDTO> listExpiredInventoryItems(Pageable pageable) {
         Page<InventoryItem> page = inventoryItemRepository.findByExpireDateBefore(LocalDate.now(), pageable);
         if(page.isEmpty())
-            throw new NotFoundException("List is empty");
+            return Page.empty();
         return page.map(inventoryItemMapper::toListDto);
     }
 

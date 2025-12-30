@@ -87,7 +87,7 @@ public class OrderServiceImpl implements OrderService {
     public Page<OrderListDTO> listOrders(Pageable pageable) {
         Page<Order> page = orderRepository.findAll(pageable);
         if(page.isEmpty())
-            throw new NotFoundException("List is empty");
+            return Page.empty();
         return page.map(orderMapper::toListDto);
     }
 
@@ -97,7 +97,7 @@ public class OrderServiceImpl implements OrderService {
         LocalDateTime end = endDate.atTime(LocalTime.MAX);
         Page<Order> page = orderRepository.findAllBySaleDateBetween(start, end, pageable);
         if(page.isEmpty())
-            throw new NotFoundException("List is empty");
+            return Page.empty();
         return page.map(orderMapper::toListDto);
     }
 

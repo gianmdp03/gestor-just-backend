@@ -66,7 +66,7 @@ public class ProductServiceImpl implements ProductService {
     public Page<ProductListDTO> listProducts(Pageable pageable) {
         Page<Product> page = productRepository.findAllByEnabledTrue(pageable);
         if(page.isEmpty())
-            throw new NotFoundException("List is empty");
+            return Page.empty();
         return page.map(productMapper::toListDto);
     }
 

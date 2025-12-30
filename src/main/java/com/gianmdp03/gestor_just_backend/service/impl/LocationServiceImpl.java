@@ -55,7 +55,7 @@ public class LocationServiceImpl implements LocationService {
     public Page<LocationListDTO> listLocations(Pageable pageable) {
         Page<Location> page = locationRepository.findAll(pageable);
         if(page.isEmpty())
-            throw new NotFoundException("Location ID does not exist");
+            return Page.empty();
         return page.map(locationMapper::toListDto);
     }
 

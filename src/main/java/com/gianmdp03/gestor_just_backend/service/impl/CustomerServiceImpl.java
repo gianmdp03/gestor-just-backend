@@ -54,7 +54,7 @@ public class CustomerServiceImpl implements CustomerService {
     public Page<CustomerListDTO> listCustomers(Pageable pageable) {
         Page<Customer> list = customerRepository.findAll(pageable);
         if (list.isEmpty())
-            throw new NotFoundException("List is empty");
+            return Page.empty();
         return list.map(customerMapper::toListDto);
     }
 
