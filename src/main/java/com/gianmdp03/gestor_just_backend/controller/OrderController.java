@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -23,11 +24,11 @@ import java.util.List;
 public class OrderController {
     private final OrderService orderService;
 
-    @PostMapping("/{customerId}")
-    public ResponseEntity<OrderListDTO> addOrderWithItems(@PathVariable Long customerId,
+    @PostMapping("/{localDateTime}/{customerId}")
+    public ResponseEntity<OrderListDTO> addOrderWithItems(@PathVariable LocalDateTime localDateTime, @PathVariable Long customerId,
                                                           @Valid @RequestBody List<OrderItemRequestDTO> orderItems)
     {
-        return ResponseEntity.status(HttpStatus.CREATED).body(orderService.addOrderWithItems(orderItems, customerId));
+        return ResponseEntity.status(HttpStatus.CREATED).body(orderService.addOrderWithItems(localDateTime, orderItems, customerId));
     }
 
     @GetMapping("/{orderId}")

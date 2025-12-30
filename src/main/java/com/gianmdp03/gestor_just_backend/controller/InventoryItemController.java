@@ -14,6 +14,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+
 @RestController
 @RequestMapping("/api/inventory-items")
 @RequiredArgsConstructor
@@ -30,36 +32,36 @@ public class InventoryItemController {
         return ResponseEntity.status(HttpStatus.OK).body(inventoryItemService.updateInventoryItem(id, dto));
     }
 
-    @GetMapping
-    public ResponseEntity<Page<InventoryItemListDTO>> listInventoryItems(
+    @GetMapping("/{localDate}")
+    public ResponseEntity<Page<InventoryItemListDTO>> listInventoryItems(@PathVariable LocalDate localDate,
             @PageableDefault(page = 0, size = 10, sort = "expireDate", direction = Sort.Direction.DESC) Pageable pageable)
     {
-        return ResponseEntity.status(HttpStatus.OK).body(inventoryItemService.listInventoryItems(pageable));
+        return ResponseEntity.status(HttpStatus.OK).body(inventoryItemService.listInventoryItems(localDate, pageable));
     }
-    @GetMapping("/product/{productId}")
-    public ResponseEntity<Page<InventoryItemListDTO>> listInventoryItemsByProduct(@PathVariable Long productId,
+    @GetMapping("/{localDate}/product/{productId}")
+    public ResponseEntity<Page<InventoryItemListDTO>> listInventoryItemsByProduct(@PathVariable LocalDate localDate, @PathVariable Long productId,
             @PageableDefault(page = 0, size = 10, sort = "expireDate", direction = Sort.Direction.DESC) Pageable pageable)
     {
-        return ResponseEntity.status(HttpStatus.OK).body(inventoryItemService.listInventoryItemsByProduct(productId, pageable));
+        return ResponseEntity.status(HttpStatus.OK).body(inventoryItemService.listInventoryItemsByProduct(localDate, productId, pageable));
     }
-    @GetMapping("/location/{locationId}")
-    public ResponseEntity<Page<InventoryItemListDTO>> listInventoryItemsByLocation(@PathVariable Long locationId,
+    @GetMapping("/{localDate}/location/{locationId}")
+    public ResponseEntity<Page<InventoryItemListDTO>> listInventoryItemsByLocation(@PathVariable LocalDate localDate, @PathVariable Long locationId,
             @PageableDefault(page = 0, size = 10, sort = "expireDate", direction = Sort.Direction.DESC) Pageable pageable)
     {
-        return ResponseEntity.status(HttpStatus.OK).body(inventoryItemService.listInventoryItemsByLocation(locationId, pageable));
+        return ResponseEntity.status(HttpStatus.OK).body(inventoryItemService.listInventoryItemsByLocation(localDate, locationId, pageable));
     }
-    @GetMapping("/expired")
-    public ResponseEntity<Page<InventoryItemListDTO>> listExpiredInventoryItems(
+    @GetMapping("/{localDate}/expired")
+    public ResponseEntity<Page<InventoryItemListDTO>> listExpiredInventoryItems(@PathVariable LocalDate localDate,
             @PageableDefault(page = 0, size = 10, sort = "expireDate", direction = Sort.Direction.DESC) Pageable pageable)
     {
-        return ResponseEntity.status(HttpStatus.OK).body(inventoryItemService.listExpiredInventoryItems(pageable));
+        return ResponseEntity.status(HttpStatus.OK).body(inventoryItemService.listExpiredInventoryItems(localDate, pageable));
     }
 
-    @GetMapping("/almost/{days}")
-    public ResponseEntity<Page<InventoryItemListDTO>> listExpiringSoonInventoryItems(
+    @GetMapping("/{localDate}/almost/{days}")
+    public ResponseEntity<Page<InventoryItemListDTO>> listExpiringSoonInventoryItems(@PathVariable LocalDate localDate,
             @PathVariable int days, @PageableDefault(page = 0, size = 10, sort = "expireDate", direction = Sort.Direction.DESC) Pageable pageable)
     {
-        return ResponseEntity.status(HttpStatus.OK).body(inventoryItemService.listExpiringSoonInventoryItems(days, pageable));
+        return ResponseEntity.status(HttpStatus.OK).body(inventoryItemService.listExpiringSoonInventoryItems(localDate, days, pageable));
     }
 
     @GetMapping("/id/{id}")

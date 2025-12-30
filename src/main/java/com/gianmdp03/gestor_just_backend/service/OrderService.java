@@ -9,11 +9,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface OrderService {
-    Order addOrder(Long customerId);
-    OrderListDTO addOrderWithItems(List<OrderItemRequestDTO> orderItems, Long customerId);
+    Order addOrder(Long customerId, LocalDateTime localDateTime);
+    OrderListDTO addOrderWithItems(LocalDateTime localDateTime, List<OrderItemRequestDTO> orderItems, Long customerId);
     Page<OrderItemListDTO> listItemsByOrder(Long orderId, Pageable pageable);
     Page<OrderListDTO> listOrders(Pageable pageable);
     Page<OrderListDTO> listOrdersBetween(LocalDate startDate, LocalDate endDate, Pageable pageable);

@@ -41,20 +41,20 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     @Transactional
-    public Order addOrder(Long customerId) {
+    public Order addOrder(Long customerId, LocalDateTime localDateTime) {
         Customer customer = customerRepository.findById(customerId).orElseThrow
                 (() -> new NotFoundException("Customer ID does not exist"));
-        Order order = new Order(LocalDateTime.now(), customer);
+        Order order = new Order(localDateTime, customer);
         return orderRepository.save(order);
     }
 
     @Override
     @Transactional
-    public OrderListDTO addOrderWithItems(List<OrderItemRequestDTO> orderItemsDTO, Long customerId){
+    public OrderListDTO addOrderWithItems(LocalDateTime localDateTime, List<OrderItemRequestDTO> orderItemsDTO, Long customerId){
         if(orderItemsDTO.isEmpty()){
             throw new NotFoundException("OrderItem list is empty");
         }
-        Order order = addOrder(customerId);
+        Order order = addOrder(customerId, localDateTime);
         List<OrderItem> orderItems = new ArrayList<>();
 
         for (OrderItemRequestDTO dto : orderItemsDTO) {
